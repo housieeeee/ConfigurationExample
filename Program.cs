@@ -9,7 +9,9 @@ app.UseEndpoints(endpoints =>
 {
     endpoints.Map("/", async context =>
     {
-        await context.Response.WriteAsync(app.Configuration["MyKey"]);
+        await context.Response.WriteAsync(app.Configuration["MyKey"] + "\n");
+        await context.Response.WriteAsync(app.Configuration.GetValue<string>("MyKey")+"\n");
+        await context.Response.WriteAsync(app.Configuration.GetValue<int>("x" , 10) + "\n");
     });
 });
 
